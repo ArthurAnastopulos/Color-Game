@@ -1,5 +1,5 @@
-var colors = generateRandomColors(6);
-
+var numbSquares = 6;
+var colors = generateRandomColors(numbSquares);
 var squares = document.querySelectorAll(".square");
 var pickedColor = pickColor();
 var colorDisplay = document.getElementById("colorDisplay");
@@ -7,14 +7,48 @@ colorDisplay.textContent = pickedColor;
 var messageDisplay = document.querySelector("#message");
 var h1 = document.querySelector("h1");
 var resetButton = document.querySelector("#reset");
+var easyBtn = document.querySelector("#easyBtn");
+var hardBtn = document.querySelector("#hardBtn");
 
 resetButton.addEventListener("click",function() {
-    colors = generateRandomColors(6);
+    colors = generateRandomColors(numbSquares);
     pickedColor = pickColor();
     colorDisplay.textContent = pickedColor;
     for(var i = 0; i < squares.length; i++) {
         squares[i].style.backgroundColor = colors[i];
-    }    
+    }
+    h1.style.backgroundColor = "steelblue";    
+})
+
+easyBtn.addEventListener("click", function() {
+    hardBtn.classList.remove("selected");
+    easyBtn.classList.add("selected");
+    numbSquares = 3;
+    colors = generateRandomColors(numbSquares);
+    pickedColor = pickColor();
+    colorDisplay.textContent = pickedColor;
+    for(var i = 0; i < squares.length; i++) {
+        if(colors[i]) {
+            squares[i].style.backgroundColor = colors[i];
+        } else {
+            squares[i].style.display = "none";
+        }
+    }
+    h1.style.backgroundColor = "steelblue"
+})
+
+hardBtn.addEventListener("click", function() {
+    hardBtn.classList.add("selected");
+    easyBtn.classList.remove("selected");
+    numbSquares = 6;
+    colors = generateRandomColors(numbSquares);
+    pickedColor = pickColor();
+    colorDisplay.textContent = pickedColor;
+    for(var i = 0; i < squares.length; i++) {
+        squares[i].style.backgroundColor = colors[i];
+        squares[i].style.display = "block";
+    }
+    h1.style.backgroundColor = "steelblue"
 })
 
 for(var i = 0; i < squares.length; i++) {
