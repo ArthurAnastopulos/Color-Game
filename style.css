@@ -2,6 +2,10 @@ body {
     background-color: #232323;
 }
 
+h1 {
+    color: whitesmoke;
+}
+
 .square {
     width: 30%;
     background: whitesmoke;
@@ -15,10 +19,8 @@ body {
     max-width: 600px;
 }
 
-h1 {
-    color: whitesmoke;
-}
-
-span {
-    color: whitesmoke;
+#stripe {
+    background: whitesmoke;
+    height: 30px;
+    text-align: center;
 }
